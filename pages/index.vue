@@ -87,9 +87,12 @@ watch(troubleshootingItems, () => {
     A[開始] --> B{1. 再起動・更新・保存}
     B -->|${troubleshootingItems.value[0].selected || '未回答'}| C{2. エラーログ}
     C -->|${troubleshootingItems.value[1].selected || '未回答'}| D{3. エラー詳細}
-    D -->|${troubleshootingItems.value[2].selected || '未回答'}| E[次のステップ]
-  `;
-
+    D -->|${troubleshootingItems.value[2].selected || '未回答'}| E{4. 検索・質問}
+    E -->|${troubleshootingItems.value[3].selected || '未回答'}| F{5. 作り直し}
+    F -->|${troubleshootingItems.value[4].selected || '未回答'}| G{6. 質問}
+    G -->|${troubleshootingItems.value[5].selected || '未回答'}| H{7. 要件・設計}
+    H -->|${troubleshootingItems.value[6].selected || '未回答'}| I{8. 相談}
+    I -->|${troubleshootingItems.value[7].selected || '未回答'}| J[終了]`;
   localStorage.setItem('flowchartInput', flowchartInput);
 }, { deep: true });
 </script>
