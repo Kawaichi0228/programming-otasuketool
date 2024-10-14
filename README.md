@@ -1,4 +1,4 @@
-# デプロイしたサイト
+# デプロイしたサイト！！！
 https://superlative-bienenstitch-875715.netlify.app
 
 # Nuxt 3 Minimal Starter
