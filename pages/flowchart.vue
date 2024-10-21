@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import mermaid from 'mermaid';
 import { onMounted, ref } from 'vue';
 
