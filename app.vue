@@ -10,9 +10,5 @@
 </template>
 
 <script lang="ts" setup>
-// Any global setup can go here
+// Piniaは自動的に初期化されるため、ここでの明示的な初期化は不要
 </script>
-
-<style>
-/* Any global styles can go here */
-</style>
