@@ -23,5 +23,8 @@ export default defineNuxtConfig({
   },
   typescript: {
     strict: true
+  },
+  build: {
+    transpile: ['@headlessui/vue']
   }
 })

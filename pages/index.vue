@@ -2,24 +2,23 @@
   <div>
     <h2 class="text-2xl font-semibold mb-6">トラブルシューティング</h2>
 
+    <!-- Clear All Button -->
+    <button @click="openClearConfirmation" class="mb-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+      すべてクリア
+    </button>
+
     <div class="mb-8">
-      <div v-for="item in displayedItems" :key="item.questionNumber" class="mb-6">
-        <div class="flex mb-2 gap-4">
-          <div
-            class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-500 text-white font-bold text-sm mb-2">
-            {{ item.questionNumber }}
-          </div>
-        </div>
-        <p class="mb-2 font-bold text-gray-600">{{ item.question }}</p>
-        <div class="flex space-x-4">
-          <button v-for="option in item.options" :key="option.id" class="font-bold py-2 px-4 rounded" :class="[
-            item.selected === option.id
-              ? 'bg-orange-500 text-white'
-              : 'bg-gray-300 text-gray-700 hover:bg-gray-400'
-          ]" @click="selectOption(item.questionNumber, option.id)" :disabled="item.selected !== null">
-            {{ option.text }}
-          </button>
-        </div>
+      <TroubleshootingItem
+        v-for="(item, index) in displayedItems"
+        :key="item.questionNumber"
+        :item="item"
+        @select-option="selectOption"
+      />
+      <!-- "Go back to previous question" button for the last displayed item -->
+      <div v-if="displayedItems.length > 1" class="mt-4">
+        <button @click="goBackToPreviousQuestion" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+          1つ前の質問にもどる
+        </button>
       </div>
     </div>
 
@@ -32,11 +31,19 @@
         進捗報告文章作成
       </NuxtLink>
     </div>
+
+    <ClearConfirmationDialog
+      :is-open="isClearConfirmationOpen"
+      @close="closeClearConfirmation"
+      @confirm="clearAll"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
+import TroubleshootingItem from '~/components/TroubleshootingItem.vue';
+import ClearConfirmationDialog from '~/components/ClearConfirmationDialog.vue';
 
 interface TroubleshootingOption {
   id: string;
@@ -142,6 +149,38 @@ const selectOption = (questionNumber: number, optionId: string) => {
     } else {
       // 最後の質問に到達した場合の処理
       console.log('トラブルシューティングが完了しました');
+    }
+  }
+};
+
+const isClearConfirmationOpen = ref(false);
+
+const openClearConfirmation = () => {
+  isClearConfirmationOpen.value = true;
+};
+
+const closeClearConfirmation = () => {
+  isClearConfirmationOpen.value = false;
+};
+
+const clearAll = () => {
+  troubleshootingItems.value.forEach(item => {
+    item.selected = null;
+  });
+  currentQuestionNumber.value = 1;
+  closeClearConfirmation();
+};
+
+const goBackToPreviousQuestion = () => {
+  if (currentQuestionNumber.value > 1) {
+    const currentItem = troubleshootingItems.value.find(item => item.questionNumber === currentQuestionNumber.value);
+    if (currentItem) {
+      currentItem.selected = null;
+    }
+    currentQuestionNumber.value--;
+    const previousItem = troubleshootingItems.value.find(item => item.questionNumber === currentQuestionNumber.value);
+    if (previousItem) {
+      previousItem.selected = null;
     }
   }
 };
