@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-screen bg-gray-50 text-gray-800 font-body pt-14 flex flex-col">
-    <header class="fixed top-0 left-0 right-0 bg-primary text-white h-14 shadow-sm z-50">
+    <header class="fixed top-0 left-0 right-0 bg-white text-white h-14 shadow-sm z-50">
       <div class="container mx-auto px-6 h-full flex items-center justify-between">
         <h1 class="flex items-center">
-          <LinkLogo href="/" classProp="ml-2" color="#fff" sub-color="#f7bb43" />
+          <LinkLogo href="/" classProp="ml-2" color="#f7bb43" sub-color="#fff" />
         </h1>
 
         <!-- Desktop Menu -->
