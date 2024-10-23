@@ -135,6 +135,16 @@ export const useTroubleshootingStore = defineStore('troubleshooting', {
   getters: {
     displayedItems: (state) => {
       return state.troubleshootingItems.filter(item => item.questionNumber <= state.currentQuestionNumber);
+    },
+    serializedState: (state) => {
+      const stateToSave = {
+        currentQuestionNumber: state.currentQuestionNumber,
+        selections: state.troubleshootingItems.map(item => ({
+          questionNumber: item.questionNumber,
+          selected: item.selected
+        }))
+      };
+      return btoa(JSON.stringify(stateToSave));
     }
   },
   actions: {
@@ -165,6 +175,20 @@ export const useTroubleshootingStore = defineStore('troubleshooting', {
         if (previousItem) {
           previousItem.selected = null;
         }
+      }
+    },
+    restoreFromBase64(base64State: string) {
+      try {
+        const stateData = JSON.parse(atob(base64State));
+        this.currentQuestionNumber = stateData.currentQuestionNumber;
+        stateData.selections.forEach((selection: { questionNumber: number; selected: string | null }) => {
+          const item = this.troubleshootingItems.find(item => item.questionNumber === selection.questionNumber);
+          if (item) {
+            item.selected = selection.selected;
+          }
+        });
+      } catch (error) {
+        console.error('Failed to restore state:', error);
       }
     }
   }
