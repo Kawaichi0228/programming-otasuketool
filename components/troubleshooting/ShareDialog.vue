@@ -18,13 +18,15 @@
               </DialogTitle>
               <div class="mt-2">
                 <p class="text-base text-gray-600 mb-6">
-                  状態を保存したURLを発行しました。
+                  現在の状態を保存したURLを発行しました。
+                  <br />
+                  (途中から再開または共有する場合は、以下のURLをコピーしてください)
                 </p>
                 <div class="flex items-center gap-3">
                   <input type="text" readonly :value="shareUrl"
-                    class="flex-1 p-3 border rounded-xl text-base text-gray-600 bg-primary-50" />
+                    class="flex-1 p-3 border rounded-xl text-base text-gray-600 bg-gray-100" />
                   <button @click="handleCopy"
-                    class="inline-flex items-center justify-center p-3 text-primary hover:text-primary bg-primary-50 hover:bg-primary-100 rounded-xl transition-colors duration-200">
+                    class="inline-flex items-center justify-center p-3 text-gray-600 hover:text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-xl transition-colors duration-200">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                       stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -36,7 +38,7 @@
 
               <div class="mt-8 flex justify-end">
                 <button type="button"
-                  class="inline-flex justify-center rounded-xl border border-transparent bg-primary-50 px-6 py-3 text-base font-medium text-gray-900 hover:bg-primary-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 transition-colors duration-200"
+                  class="inline-flex justify-center rounded-xl border border-transparent px-6 py-3 text-base font-medium text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 transition-colors duration-200 bg-gray-100 hover:bg-gray-200"
                   @click="$emit('close')">
                   閉じる
                 </button>
