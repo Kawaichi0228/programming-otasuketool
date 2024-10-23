@@ -9,32 +9,30 @@
         <!-- Desktop Menu -->
         <div class=" hidden md:flex gap-3">
           <button @click="openClearConfirmation"
-            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg text-sm transition-colors duration-200">
-            すべてクリア
+            class="bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-2 px-4 rounded-lg text-sm transition-colors duration-200 flex items-center gap-1">
+            <font-awesome-icon :icon="['far', 'circle-xmark']" class="h-6 w-6 text-gray-600" />
+            <span>
+              すべてクリア
+            </span>
           </button>
           <button @click="openShareDialog"
-            class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-lg text-sm transition-colors duration-200">
-            保存して共有
+            class="font-bold py-2 px-4 rounded-lg text-sm transition-colors duration-200 border-primary border-2 bg-white text-primary flex items-center gap-1">
+            <font-awesome-icon :icon="['fas', 'floppy-disk']" class="h-6 w-6 text-primary" />
+            <span>
+              保存して共有
+            </span>
           </button>
         </div>
 
         <!-- Mobile Icons -->
         <div class="flex md:hidden gap-2">
-          <button @click="openClearConfirmation"
-            class="p-2 hover:bg-primary-600 rounded-lg transition-colors duration-200" aria-label="すべてクリア">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
+          <button @click="openClearConfirmation" class="p-2 rounded-lg transition-colors duration-200"
+            aria-label="すべてクリア">
+            <font-awesome-icon :icon="['far', 'circle-xmark']" class="h-6 w-6 text-gray-600" />
           </button>
-          <button @click="openShareDialog" class="p-2 hover:bg-primary-600 rounded-lg transition-colors duration-200"
-            aria-label="保存して共有">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-            </svg>
+
+          <button @click="openShareDialog" class="p-2 rounded-lg transition-colors duration-200" aria-label="保存して共有">
+            <font-awesome-icon :icon="['fas', 'floppy-disk']" class="h-6 w-6 text-gray-600" />
           </button>
         </div>
       </div>
