@@ -6,7 +6,7 @@
     {
       "label": "ローカルサーバー起動",
       "type": "shell",
-      "command": "open -a 'Google Chrome' http://localhost:3000 && yarn run dev"
+      "command": "yarn install && yarn run dev && open -a 'Google Chrome' http://localhost:3000"
     }
   ]
 }
