@@ -1,7 +1,7 @@
 <template>
   <button 
     @click="$emit('click')" 
-    class="mb-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+    class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-xl transition-colors duration-200"
   >
     すべてクリア
   </button>
